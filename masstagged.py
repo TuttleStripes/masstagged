@@ -8,7 +8,11 @@ from collections import defaultdict, deque
 import praw
 from prawcore.exceptions import Forbidden, NotFound, Redirect
 
-reddit = praw.Reddit('TuttleStripes')
+reddit = praw.Reddit(client_id=os.environ['CLIENT_ID'],
+                     client_secret=os.environ['CLIENT_SECRET'],
+                     password=os.environ['REDDIT_PASS'],
+                     username=os.environ['REDDIT_USER'],
+                     user_agent=os.environ['USER_AGENT'])
 
 with open('tagged.txt') as f:
     TAGGED = f.read().split('\n')
